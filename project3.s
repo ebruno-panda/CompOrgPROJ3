@@ -5,8 +5,16 @@
 
 .text
 	main:	
+		move $t4, $zero # $t4 = 0 for current character
+		move $t6, $zero # $t6 = 0 for non blank character count
+		
+		move $t0, $zero #sum tracker
+		move $t1, $zero #len(userInput)
+
+
 		#gets user input
-		li $v0, 8 #get user input (text)
+		li $v0, 8
 		la $a0, userInput
-		li $a1, 1001
+		la $a1, 1001		
 		syscall
+

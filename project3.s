@@ -10,11 +10,16 @@
 		
 		move $t0, $zero #sum tracker
 		move $t1, $zero #len(userInput)
+		
+		#subprograms
+		jal yoink
+		jal iterar
+		jal finalizer
 
-
+	yoink:
 		#gets user input
 		li $v0, 8
 		la $a0, userInput
-		la $a1, 1001		
+		li $a1, 1001		
 		syscall
 

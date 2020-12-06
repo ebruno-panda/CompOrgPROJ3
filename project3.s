@@ -23,3 +23,6 @@
 		li $a1, 1001		
 		syscall
 
+		la $t2, userInput #assigns input to address
+		jr $ra #jumps back to part of main, calling on iterar next
+

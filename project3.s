@@ -8,3 +8,5 @@
 		#gets user input
 		li $v0, 8 #get user input (text)
 		la $a0, userInput
+		li $a1, 1001
+		syscall

@@ -36,3 +36,9 @@
 		beq $t3, 0x20, tabberspace # If *space* is detected, go to function tabberspace (and treat both the same)
 		beq $t3, 0xA, EnterAlert #If *Enter* is detected, go to function EnterAlert
 
+		#NOTE: t5 is used as an evaluator type boolean ; based on order of ASCII table numbers, uppercase letters, and lowercase letters will be dealt with respectively due to the nature of how "slt" works		
+		slt $t5, $t3, 0x30 #is ascii < 0?
+	        beq $t5, 1, hmm #if t5 is one, character is invalid		
+       	        slt $t5, $t3, 0x3A #if ascii value < ":", it's a lowercase letter
+       	        beq $t5, 1, charNconv #if t5 is one then go to charNconv
+

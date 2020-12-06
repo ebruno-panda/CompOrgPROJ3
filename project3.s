@@ -36,20 +36,32 @@
 		beq $t3, 0x20, tabberspace # If *space* is detected, go to function tabberspace (and treat both the same)
 		beq $t3, 0xA, EnterAlert #If *Enter* is detected, go to function EnterAlert
 
-		#NOTE: t5 is used as an evaluator type boolean ; based on order of ASCII table numbers, uppercase letters, and lowercase letters will be dealt with respectively due to the nature of how "slt" works		
+		#NOTE: t5 is used as an evaluator type boolean ; based on order of ASCII table numbers, uppercase letters, and lowercase letters will ...
+		# ... be dealt with respectively due to the nature of how "slt" works
+
+		#Determines if character type is "number"
 		slt $t5, $t3, 0x30 #is ascii < 0?
 	        beq $t5, 1, hmm #if t5 is one, character is invalid		
        	        slt $t5, $t3, 0x3A #if ascii value < ":", it's a lowercase letter
        	        beq $t5, 1, charNconv #if t5 is one then go to charNconv
 
+		#Determines if character type is "uppercase"
 		slt $t5, $t3, 0x41 #is ascii < "A"?
 	        beq $t5, 1, hmm #if t5 is one, character is invalid
        	        slt $t5, $t3, 0x5B #if ascii value < "[", it's an uppercase letter
        	        beq $t5, 1, charUconv #if t5 is one then go to charUconv
 
+		#Determines if character type is "lowercase"
 		slt $t5, $t3, 0x61 #is ascii < "a"?
 	        beq $t5, 1, hmm #if t5 is one, character is invalid
                 slt $t5, $t3, 0x7B #if ascii value < "{", it's a lowercase letter
                 beq $t5, 1, charLconv #if t5 is one then go to charLconv
+
+		#End of input
                 j EnterAlert #reached end of input after considering all possibilities, so go to EnterAlert
 
+
+	charNconv:
+		addi $t3, $t3, -48 # convert to integer	
+		add $t0, $t0, $t3 #adds to total value tracker $t0
+		j impostor #checks base and moves on, else counts "impostors"

@@ -31,3 +31,8 @@
 		beqz $t3, regulator #if end of string, get ready to end program
 		j charspecs #look at what type of character is being loaded
 
+	charspecs:
+		beq $t3, 0x9, tabberspace # If *tab* is detected, go to function tabberspace (and treat both the same)
+		beq $t3, 0x20, tabberspace # If *space* is detected, go to function tabberspace (and treat both the same)
+		beq $t3, 0xA, EnterAlert #If *Enter* is detected, go to function EnterAlert
+

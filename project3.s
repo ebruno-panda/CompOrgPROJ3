@@ -26,3 +26,8 @@
 		la $t2, userInput #assigns input to address
 		jr $ra #jumps back to part of main, calling on iterar next
 
+	iterar:
+		lb $t3, ($t2) #each bit of input in $t2 is looked at in $t3
+		beqz $t3, regulator #if end of string, get ready to end program
+		j charspecs #look at what type of character is being loaded
+

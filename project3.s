@@ -77,3 +77,11 @@
 		addi $t3, $t3, -87 # convert: ‘a’=10,‘b’=11,etc
 		add $t0, $t0, $t3 #adds to total value tracker $t0
 		j impostor #checks base and moves on, else counts "impostors"
+
+
+	EnterAlert:
+		addi $t1, $t1, 1 #counts character in input individually
+		addi $t2, $t2, 1 #moves to next character
+		
+		beq $t3, 0xA, iterar #value 'ENTER' will be sorted out in iterar and ~eventually~ to function finalizer
+		beq $t1, 5, hmm #if input counter exceeds 4, branches to function "hmm" to deal with this instance

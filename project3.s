@@ -102,4 +102,14 @@
 		la $a0, whoops #calls invalde message
 		li $v0, 4
 		syscall
+
+
+	impostor:
+		#Again, $t5 is referenced to determine N in baseN
+		slt $t5, $t3, 30 #Not right base? then...
+		beqz $t5, hmm #invalid base, there for input is invalid
+		
+		#wrong charcater type alert. Impostor(s) detected. Count all
+		add $t4, $zero, 1
+		add $t6, $zero, 1
 	

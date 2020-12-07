@@ -96,3 +96,10 @@
 		#else, there are spaces/tabs after other characters
 		add $t7, $zero, 1
 		j EnterAlert
+
+
+	hmm:
+		la $a0, whoops #calls invalde message
+		li $v0, 4
+		syscall
+	

@@ -26,6 +26,11 @@
 		la $t2, userInput #assigns input to address
 		jr $ra #jumps back to part of main, calling on iterar next
 
+
+	regulator:
+		jr $ra #will go to "finalizer" back in main after all other [sub]programs have run
+
+
 	iterar:
 		lb $t3, ($t2) #each bit of input in $t2 is looked at in $t3
 		beqz $t3, regulator #if end of string, get ready to end program
@@ -124,3 +129,6 @@
 		move $a0, $t0
 		syscall
 	
+#finish it
+li $v0, 10
+syscall	

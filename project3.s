@@ -71,3 +71,9 @@
 		addi $t3, $t3, -55 # convert: ‘A’=10,‘B’=11,etc
 		add $t0, $t0, $t3 #adds to total value tracker $t0
 		j impostor #checks base and moves on, else counts "impostors"
+
+
+	charLconv:
+		addi $t3, $t3, -87 # convert: ‘a’=10,‘b’=11,etc
+		add $t0, $t0, $t3 #adds to total value tracker $t0
+		j impostor #checks base and moves on, else counts "impostors"

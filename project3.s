@@ -117,4 +117,10 @@
 		#blanks in between impostors --> REPORT
 		beq $t7, 1, hmm
 		j EnterAlert
+
+
+	finalizer:
+		li $v0, 1
+		move $a0, $t0
+		syscall
 	

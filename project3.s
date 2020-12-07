@@ -85,3 +85,5 @@
 		
 		beq $t3, 0xA, iterar #value 'ENTER' will be sorted out in iterar and ~eventually~ to function finalizer
 		beq $t1, 5, hmm #if input counter exceeds 4, branches to function "hmm" to deal with this instance
+
+		j iterar #back to center function

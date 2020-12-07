@@ -87,3 +87,12 @@
 		beq $t1, 5, hmm #if input counter exceeds 4, branches to function "hmm" to deal with this instance
 
 		j iterar #back to center function
+
+
+	tabberspace:
+		add $t4, $zero, 0 #are there characters that are not blank?
+		beqz $t6, EnterAlert
+		
+		#else, there are spaces/tabs after other characters
+		add $t7, $zero, 1
+		j EnterAlert
